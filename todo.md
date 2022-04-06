@@ -6,6 +6,7 @@
 
 **Templates**
 
+-   [ ] base (navigation)
 -   [ ] index (welcome user)
 -   [ ] log in
 -   [ ] log out
@@ -15,7 +16,7 @@
 
 **Models**
 
--   [ ] board game
+-   [ ] board game (like Book in bcb)
 -   [ ] game loan
 
 **Views**
@@ -24,16 +25,22 @@
 -   [ ] log out
 -   [ ] register
 
--   [ ] board games (listing all available games)
--   [ ] board game (listing loans etc)
--   [ ] create game (adding a new game)
--   [ ] edit game (editing you own games)
--   [ ] loan game (loaning a game that is free)
--   [ ] edit loan (editing a made loan)
+-   [ ] board games (like books in cbc)
+    -   listing all available games
+-   [ ] board game (like book/reviews in cbc)
+    -   listing loans etc
+-   [ ] create game (like new_book in cbc)
+    -   adding a new game
+-   [ ] edit game (like edit_review/edit_book in cbc)
+    -   editing you own games
+-   [ ] loan game
+    -   loaning a game that is free
+-   [ ] edit loan
+    -   editing a made loan
 
 **Forms**
 
--   [ ] Game form
+-   [ ] Game form (like BookForm in cbc)
     -   name
     -   genre
     -   year
