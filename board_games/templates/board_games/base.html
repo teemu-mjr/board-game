@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board Gamers!</title>
+</head>
+
+<body>
+    <nav>
+        Nav bar
+        <a href={% url 'board_games:index' %}>index</a>
+        <a href={% url 'board_games:games' %}>games</a>
+        <a href={% url 'board_games:new_game' %}>new_game</a>
+        {% comment %} <a href={% url 'board_games:new_loan' %}>new_loan</a>
+        <a href={% url 'board_games:game_info' %}>game_info</a>
+        <a href={% url 'board_games:edit_game' %}>edit_game</a>
+        <a href={% url 'board_games:edit_loan' %}>edit_loan</a>
+        <a href={% url 'board_games:return_game' %}>return_game</a> {% endcomment %}
+    </nav>
+    <main>
+        <div>
+            {% block page_header %}{% endblock page_header %}
+        </div>
+        <div>
+            {% block content %}{% endblock content %}
+        </div>
+    </main>
+
+</body>
+
+</html>
