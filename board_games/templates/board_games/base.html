@@ -14,11 +14,14 @@
         <a href={% url 'board_games:index' %}>index</a>
         <a href={% url 'board_games:games' %}>games</a>
         <a href={% url 'board_games:new_game' %}>new_game</a>
-        {% comment %} <a href={% url 'board_games:new_loan' %}>new_loan</a>
-        <a href={% url 'board_games:game_info' %}>game_info</a>
-        <a href={% url 'board_games:edit_game' %}>edit_game</a>
-        <a href={% url 'board_games:edit_loan' %}>edit_loan</a>
-        <a href={% url 'board_games:return_game' %}>return_game</a> {% endcomment %}
+        <a href={% url 'users:login' %}>login</a>
+        <a href={% url 'users:logout' %}>logout</a>
+        <a href={% url 'users:register' %}>register</a>
+        <a href={% url 'board_games:new_loan' 1 %}>new_loan</a>
+        <a href={% url 'board_games:game_info' 1 %}>game_info</a>
+        <a href={% url 'board_games:edit_game' 1 %}>edit_game</a>
+        <a href={% url 'board_games:edit_loan' 1 %}>edit_loan</a>
+        <a href={% url 'board_games:return_game' 1 %}>return_game</a>
     </nav>
     <main>
         <div>

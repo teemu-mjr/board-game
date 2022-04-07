@@ -21,9 +21,9 @@
 
 **Views**
 
--   [ ] log in
--   [ ] log out
--   [ ] register
+-   [x] log in
+-   [x] log out
+-   [x] register
 
 -   [ ] board games (like books in cbc)
     -   listing all available games
