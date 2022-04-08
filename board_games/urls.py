@@ -10,11 +10,11 @@ urlpatterns = [
     # board game information
     path("games/<int:game_id>/", views.game_info, name="game_info"),
     # adding a new game
-    path("new_game/", views.new_game, name="new_game"),
+    path("add_game/", views.add_game, name="add_game"),
     # editing a game
     path("edit_game/<int:game_id>/", views.edit_game, name="edit_game"),
     # loaning a game
-    path("new_loan/<int:game_id>/", views.new_loan, name="new_loan"),
+    path("add_loan/<int:game_id>/", views.add_loan, name="add_loan"),
     # edit loan
     path("edit_loan/<int:game_id>/", views.edit_loan, name="edit_loan"),
     # return game

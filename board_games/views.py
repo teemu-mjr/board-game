@@ -1,4 +1,8 @@
-from django.shortcuts import render
+from django.http import Http404
+from django.shortcuts import redirect, render
+
+from .forms import GameForm, GameLoanForm
+from .models import BoardGame, GameLoan
 
 # Create your views here.
 
@@ -10,34 +14,82 @@ def index(request):
 
 def games(request):
     """Shows all the games available"""
-    return render(request, "board_games/games.html")
+    games = BoardGame.objects.order_by("game")
+    context = {"games": games}
+    return render(request, "board_games/games.html", context)
 
 
 def game_info(request):
-    """Shows information about given game"""
+    """TODO Shows information about given game"""
     return render(request, "board_games/game_info.html")
 
 
-def new_game(request):
+def add_game(request):
     """Adds a new game to the database"""
-    return render(request, "board_games/new_game.html")
+    if request.method != "POST":
+        form = GameForm()
+
+    else:
+        form = GameForm(request.POST)
+        if form.is_valid():
+            new_game = form.save(commit=False)
+            new_game.owner = request.user
+            new_game.save()
+            return redirect("board_games:games")
+
+    context = {"form": form}
+    return render(request, "board_games/add_game.html", context)
 
 
 def edit_game(request):
-    """Adds a new game to the database"""
+    """TODO Adds a new game to the database"""
     return render(request, "board_games/edit_game.html")
 
 
-def new_loan(request):
+def add_loan(request, game_id):
     """Adds a new game to the database"""
-    return render(request, "board_games/new_loan.html")
+    game = BoardGame.objects.get(id=game_id)
+
+    if request.method != "POST":
+        form = GameLoanForm()
+
+    else:
+        form = GameLoanForm(request.POST)
+        if form.is_valid():
+            new_loan = form.save(commit=False)
+            new_loan.game = game
+            new_loan.owner = request.user
+            new_loan.save()
+            # TODO redirect to the user loans?
+            return redirect("board_games:games")
+
+    context = {"form": form}
+    return render(request, "board_games/add_loan.html", context)
 
 
-def edit_loan(request):
+def edit_loan(request, loan_id):
     """Adds a new game to the database"""
-    return render(request, "board_games/edit_loan.html")
+    loan = GameLoan.objects.get(id=loan_id)
+    game = loan.game
+
+    # if loan.owner != request.user:
+    #     raise Http404
+
+    if request.method != "POST":
+        form = GameLoanForm(instance=loan)
+
+    else:
+        form = GameLoanForm(instance=loan, data=request.POST)
+
+        if form.is_valid():
+            form.save()
+            # TODO redirect to game loans
+            return redirect("board_games:games")
+
+    context = {"loan": loan, "game": game, "form": form}
+    return render(request, "board_games/edit_loan.html", context)
 
 
 def return_game(request):
-    """Adds a new game to the database"""
+    """TODO Adds a new game to the database"""
     return render(request, "board_games/return_game.html")
