@@ -7,8 +7,8 @@ from .models import BoardGame, GameLoan
 
 @admin.register(BoardGame)
 class BoardGameAdmin(admin.ModelAdmin):
-    list_display = ('Game', 'Genre', 'Year_published')
+    list_display = ('game', 'genre', 'year_published')
 
 @admin.register(GameLoan)
 class GameLoanAdmin(admin.ModelAdmin):
-    list_display = ('Game', 'Loaner', 'Date_loaned')
+    list_display = ('game', 'date_loaned', 'date_returned')

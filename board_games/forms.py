@@ -1,4 +1,3 @@
-from socket import fromshare
 from django import forms
 
 from .models import BoardGame, GameLoan
@@ -6,11 +5,11 @@ from .models import BoardGame, GameLoan
 class GameForm(forms.ModelForm):
     class Meta:
         model = BoardGame
-        fields = ['Game', 'Genre', 'Year_published']
-        labels = {'Year_published': 'Year Published'}
+        fields = ['game', 'genre', 'year_published', 'owner']
+        labels = {'game': 'Game', 'genre': 'Genre', 'year_published': 'Year Published'}
 
 class GameLoan(forms.ModelForm):
     class Meta:
         model = GameLoan
-        fields = ['Game', 'Loaner', 'Date_loaned']
-        labels = {'Date_loaned': 'Date of loan'}
+        fields = ['game', 'date_loaned', 'date_returned']
+        labels = {'date_loaned': 'Date of loan', 'date_returned': 'Date Returned'}
