@@ -4,10 +4,10 @@ from . import views
 app_name = "users"
 
 urlpatterns = [
-    # Custom login url
-    path("login/", views.log_in, name="login"),
+    # Include default auth urls.
+    path('', include('django.contrib.auth.urls')),
     # Custom logout url
-    path("logout/", views.log_out, name="logout"),
+    path("log_out/", views.log_out, name="log_out"),
     # Registering a new user
     path("register/", views.register, name="register"),
 ]

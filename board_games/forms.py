@@ -6,7 +6,7 @@ from .models import BoardGame, GameLoan
 class GameForm(forms.ModelForm):
     class Meta:
         model = BoardGame
-        fields = ['game', 'genre', 'year_published', 'owner']
+        fields = ['game', 'genre', 'year_published']
         labels = {'game': 'Game', 'genre': 'Genre',
                   'year_published': 'Year Published'}
 

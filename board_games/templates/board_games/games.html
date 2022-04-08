@@ -4,5 +4,15 @@ This is the games page header
 {% endblock page_header %}
 
 {% block content %}
-This is the games page content
+
+<ul>
+    {% for game in games %}
+    <li>
+        <a href={% url 'board_games:game_info' game.id %}>{{game}}</a>
+    </li>
+    {% empty %}
+    <li>No games :(</li>
+    {% endfor %}
+
+</ul>
 {% endblock content %}

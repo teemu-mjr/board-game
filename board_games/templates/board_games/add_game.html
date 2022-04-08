@@ -4,5 +4,11 @@ This is the new_game page header
 {% endblock page_header %}
 
 {% block content %}
-This is the new_game page content
+
+<form action="{% url 'board_games:add_game' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add</button>
+</form>
+
 {% endblock content %}

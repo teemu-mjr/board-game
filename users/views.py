@@ -1,31 +1,14 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import logout, login
+from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 # Create your views here.
 
 
-def log_in(request):
-    """Custom login view"""
-    if request.method != "POST":
-        # Disply plank login form
-        form = AuthenticationForm()
-
-    else:
-        form = AuthenticationForm(request.POST)
-
-        if form.is_valid():
-            login(request)
-            return redirect("users/login.html")
-
-    context = {"form": form}
-    return render(request, "users/register.html", context)
-
-
 def log_out(request):
     """Custom logout view"""
     logout(request)
-    return render(request, "users/logout.html")
+    return render(request, "registration/logout.html")
 
 
 def register(request):
@@ -45,4 +28,4 @@ def register(request):
             return redirect("board_games:index")
 
     context = {"form": form}
-    return render(request, "users/register.html", context)
+    return render(request, "registration/register.html", context)

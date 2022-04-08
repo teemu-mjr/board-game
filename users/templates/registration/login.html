@@ -1,0 +1,22 @@
+{% extends "board_games/base.html" %}
+
+{% block page_header %}
+<h2>Log in to your account.</h2>
+{% endblock page_header %}
+
+{% block content %}
+
+<form action="{% url 'users:login' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button name="submit">Log in</button>
+
+    {% if user.is_authenticated %}
+    <h1>Hello!</h1>
+    {% endif %}
+
+    <input type="hidden" name="next" value="{% url 'board_games:index' %}">
+</form>
+
+{% endblock content %}

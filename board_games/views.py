@@ -19,7 +19,7 @@ def games(request):
     return render(request, "board_games/games.html", context)
 
 
-def game_info(request):
+def game_info(request, game_id):
     """TODO Shows information about given game"""
     return render(request, "board_games/game_info.html")
 
