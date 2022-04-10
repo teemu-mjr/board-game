@@ -20,8 +20,11 @@ def games(request):
 
 
 def game_info(request, game_id):
-    """TODO Shows information about given game"""
-    return render(request, "board_games/game_info.html")
+    """Shows information about given game"""
+    game = BoardGame.objects.get(id=game_id)
+    # TODO add game loan history
+    context = {"game": game}
+    return render(request, "board_games/game_info.html", context)
 
 
 def add_game(request):

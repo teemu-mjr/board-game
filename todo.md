@@ -25,7 +25,7 @@
 -   [x] log out
 -   [x] register
 
--   [ ] board games (like books in cbc)
+-   [x] board games (like books in cbc)
     -   listing all available games
 -   [ ] board game (like book/reviews in cbc)
     -   listing loans etc

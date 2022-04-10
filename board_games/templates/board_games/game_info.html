@@ -4,5 +4,10 @@ This is the game_info page header
 {% endblock page_header %}
 
 {% block content %}
-This is the game_info page content
+<h1>{{game.game}}</h1>
+<p>{{game.genre}}</p>
+<p>{{game.year_published}}</p>
+<p>{{game.owner}}</p>
+
+<a href="{% url 'board_games:edit_game' game.id %}">Edit game (TODO)</a>
 {% endblock content %}
