@@ -4,5 +4,9 @@ This is the edit_game page header
 {% endblock page_header %}
 
 {% block content %}
-This is the edit_game page content
+<form action="{% url 'board_games:edit_game' game.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
 {% endblock content %}

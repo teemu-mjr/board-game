@@ -44,9 +44,25 @@ def add_game(request):
     return render(request, "board_games/add_game.html", context)
 
 
-def edit_game(request):
-    """TODO Adds a new game to the database"""
-    return render(request, "board_games/edit_game.html")
+def edit_game(request, game_id):
+    """Adds a new game to the database"""
+    game = BoardGame.objects.get(id=game_id)
+
+    # if loan.owner != request.user:
+    #     raise Http404
+
+    if request.method != "POST":
+        form = GameForm(instance=game)
+
+    else:
+        form = GameForm(instance=game, data=request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect("board_games:game_info", game_id)
+
+    context = {"game": game, "form": form}
+    return render(request, "board_games/edit_game.html", context)
 
 
 def add_loan(request, game_id):

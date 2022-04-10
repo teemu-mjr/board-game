@@ -31,7 +31,7 @@
     -   listing loans etc
 -   [ ] create game (like new_book in cbc)
     -   adding a new game
--   [ ] edit game (like edit_review/edit_book in cbc)
+-   [x] edit game (like edit_review/edit_book in cbc)
     -   editing you own games
 -   [ ] loan game
     -   loaning a game that is free
