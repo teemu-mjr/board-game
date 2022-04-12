@@ -6,13 +6,26 @@
 
 **Templates**
 
--   [ ] base (navigation)
--   [ ] index (welcome user)
--   [ ] log in
--   [ ] log out
--   [ ] board games
--   [ ] game loans (shows the users loans)
--   [ ] board gamers
+steph:
+
+edit_game,
+add_game,
+add_loan,
+game_loans (where all your loans are listed, with return date and return loan button)
+return_game, (will list a form), only has datefield with return button?
++ opinion on styling :)
+
+
+gabes:
+
+index,
+base,
+games,
+game_info,
+edit_loan,
+login,
+logout,
+register
 
 **Models**
 
