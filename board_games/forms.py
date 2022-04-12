@@ -14,6 +14,9 @@ class GameForm(forms.ModelForm):
 class GameLoanForm(forms.ModelForm):
     class Meta:
         model = GameLoan
-        fields = ['game', 'date_loaned', 'date_returned']
-        labels = {'date_loaned': 'Date of loan',
-                  'date_returned': 'Date Returned'}
+        fields = ['game', 'return_date']
+        labels = {'game': 'Game', 'return_date': 'Return date'}
+
+
+
+

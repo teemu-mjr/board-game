@@ -16,5 +16,9 @@ class BoardGame(models.Model):
 
 class GameLoan(models.Model):
     game = models.ForeignKey(BoardGame, on_delete=models.CASCADE)
-    date_loaned = models.DateTimeField()
-    date_returned = models.DateTimeField()
+    date_loaned = models.DateTimeField(auto_now_add=True)
+    return_date = models.DateTimeField()
+    returned = models.BooleanField()
+
+
+    
