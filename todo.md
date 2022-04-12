@@ -13,6 +13,10 @@ add_game,
 add_loan,
 game_loans (where all your loans are listed, with return date and return loan button)
 return_game, (will list a form), only has datefield with return button?
+
+add restricted access,
+
+more specific bootstrap styling ?
 + opinion on styling :)
 
 

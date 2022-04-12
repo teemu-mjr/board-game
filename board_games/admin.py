@@ -11,4 +11,4 @@ class BoardGameAdmin(admin.ModelAdmin):
 
 @admin.register(GameLoan)
 class GameLoanAdmin(admin.ModelAdmin):
-    list_display = ('game', 'date_loaned', 'date_returned')
+    list_display = ('game', 'date_loaned', 'returned')
