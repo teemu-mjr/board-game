@@ -1,0 +1,19 @@
+{% extends 'board_games/base.html' %}
+{% block page_header %}
+This is the loans page header
+{% endblock page_header %}
+
+{% block content %}
+
+<ul>
+    {% for game in games %}
+    <li>
+        <a href={% url 'board_games:return_game' game.id %}>Return {{game}}</a>
+        <p>{{ game.return_date }}</p>
+    </li>
+    {% empty %}
+    <li>No loans</li>
+    {% endfor %}
+
+</ul>
+{% endblock content %}

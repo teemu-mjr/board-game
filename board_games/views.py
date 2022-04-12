@@ -19,6 +19,13 @@ def games(request):
     return render(request, "board_games/games.html", context)
 
 
+def loans(request):
+    """Shows all users loans"""
+    games = BoardGame.objects.filter(loaned=True)
+    context = {"games": games}
+    return render(request, "board_games/loans.html", context)
+
+
 def game_info(request, game_id):
     """Shows information about given game"""
     game = BoardGame.objects.get(id=game_id)
@@ -28,7 +35,7 @@ def game_info(request, game_id):
 
 
 def add_game(request):
-    """Adds a new game to the database"""
+    """Adds a new game"""
     if request.method != "POST":
         form = GameForm()
 
@@ -45,7 +52,7 @@ def add_game(request):
 
 
 def edit_game(request, game_id):
-    """Adds a new game to the database"""
+    """Edit a game"""
     game = BoardGame.objects.get(id=game_id)
 
     # if loan.owner != request.user:
@@ -66,7 +73,7 @@ def edit_game(request, game_id):
 
 
 def add_loan(request, game_id):
-    """Adds a new game to the database"""
+    """Adds a new loan"""
     game = BoardGame.objects.get(id=game_id)
 
     if request.method != "POST":
@@ -89,7 +96,7 @@ def add_loan(request, game_id):
 
 
 def edit_loan(request, loan_id):
-    """Adds a new game to the database"""
+    """Editing a loan"""
     loan = GameLoan.objects.get(id=loan_id)
     game = loan.game
 
@@ -111,6 +118,9 @@ def edit_loan(request, loan_id):
     return render(request, "board_games/edit_loan.html", context)
 
 
-def return_game(request):
-    """TODO Adds a new game to the database"""
-    return render(request, "board_games/return_game.html")
+def return_game(request, game_id):
+    """Returns the game given"""
+    game = BoardGame.objects.get(id=game_id)
+    game.loaned = False
+    game.save()
+    return redirect("board_games:loans")
