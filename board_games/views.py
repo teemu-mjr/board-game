@@ -79,10 +79,12 @@ def add_loan(request, game_id):
             new_loan.game = game
             new_loan.owner = request.user
             new_loan.save()
+            game.loaned = True
+            game.save()
             # TODO redirect to the user loans?
             return redirect("board_games:games")
 
-    context = {"form": form}
+    context = {"game": game, "form": form}
     return render(request, "board_games/add_loan.html", context)
 
 

@@ -1,13 +1,13 @@
 {% extends 'board_games/base.html' %}
-{% block page_header %}
-This is the game_info page header
-{% endblock page_header %}
-
-{% block content %}
+{% block page_header %} This is the
+game_info page header {% endblock page_header %} {% block content %}
 <h1>{{game.game}}</h1>
 <p>{{game.genre}}</p>
 <p>{{game.year_published}}</p>
 <p>{{game.owner}}</p>
 
 <a href="{% url 'board_games:edit_game' game.id %}">Edit game</a>
+{% if not game.loaned %}
+<a href="{% url 'board_games:add_loan' game.id %}">Loan game</a>
+{% endif %}
 {% endblock content %}

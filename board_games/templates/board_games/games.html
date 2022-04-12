@@ -8,6 +8,11 @@ This is the games page header
 <ul>
     {% for game in games %}
     <li>
+        {% if not game.loaned %}
+        Available
+        {% elif game.loaned %}
+        Unavailable
+        {% endif %}
         <a href={% url 'board_games:game_info' game.id %}>{{game}}</a>
     </li>
     {% empty %}
