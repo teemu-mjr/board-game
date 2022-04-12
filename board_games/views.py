@@ -29,8 +29,8 @@ def loans(request):
 def game_info(request, game_id):
     """Shows information about given game"""
     game = BoardGame.objects.get(id=game_id)
-    # TODO add game loan history
-    context = {"game": game}
+    loans = GameLoan.objects.filter(game=game).order_by("-return_date")
+    context = {"game": game, "loans": loans}
     return render(request, "board_games/game_info.html", context)
 
 

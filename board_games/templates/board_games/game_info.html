@@ -1,6 +1,8 @@
 {% extends 'board_games/base.html' %}
-{% block page_header %} This is the
-game_info page header {% endblock page_header %} {% block content %}
+{% block page_header %}
+This is the game_info page header
+{% endblock page_header %}
+{% block content %}
 <h1>{{game.game}}</h1>
 <p>{{game.genre}}</p>
 <p>{{game.year_published}}</p>
@@ -9,5 +11,19 @@ game_info page header {% endblock page_header %} {% block content %}
 <a href="{% url 'board_games:edit_game' game.id %}">Edit game</a>
 {% if not game.loaned %}
 <a href="{% url 'board_games:add_loan' game.id %}">Loan game</a>
+{% else %}
+<p>
+    currently loaned by {{ loans.first.owner }} returndate : {{ loans.first.return_date }}
+</p>
 {% endif %}
+
+<ul>
+    {% for loan in loans %}
+    <li>
+        {{ loan.owner }}
+        {{ loan.return_date }}
+    </li>
+    {% endfor %}
+
+</ul>
 {% endblock content %}
