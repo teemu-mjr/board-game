@@ -1,9 +1,19 @@
-{% extends 'board_games/base.html' %}
+{% extends "board_games/base.html" %}
 
-{% block page_header %}
-This is the index page header
+{% block page_header %} 
+    <div class="jumbotron">
+        <h1 class="display-3">Track your games.</h1>
+        <p class="lead"></p>The Game Board website give you the opportunity to play and review any game you ever wanted.
+            A board game is a game that involves counters or pieces moved or placed on a pre-marked surface or "board", 
+            according to a set of rules. 
+            Games can be based on pure strategy, chance or a mixture of the two, 
+            and usually have a goal that a player aims to achieve. 
+        </p>
+        <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+            role="button">Register &raquo;</a>
+            
+        <a class="btn btn-lg btn-primary" href="{% url 'users:login' %}"
+            role="button">Log in &raquo;</a>
+    </div>
+
 {% endblock page_header %}
-
-{% block content %}
-This is the index page content
-{% endblock content %}
