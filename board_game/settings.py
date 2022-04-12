@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Custom apps
     'board_games',
     "users",
+    "bootstrap4"
 ]
 
 MIDDLEWARE = [
