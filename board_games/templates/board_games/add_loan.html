@@ -1,14 +1,19 @@
 {% extends 'board_games/base.html' %}
+
 {% block page_header %}
-{{ game.game }}
+<h2>Loan {{ game }}</h2>
 {% endblock page_header %}
 
 {% block content %}
 
 <form action="{% url 'board_games:add_loan' game.id %}" method="post">
+    <div class="form-group">
+        <label for="return_date">Loan untill:</label>
+        <input type="date" class="form-control" id="return_date" name="return_date">
+      </div>
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Loan</button>
+    <button type="submit" class="btn btn-success">Loan</button>
 </form>
 
 {% endblock content %}
+
