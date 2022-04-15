@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.http import Http404
 from django.shortcuts import redirect, render
 
@@ -21,8 +22,8 @@ def games(request):
 
 def loans(request):
     """Shows all users loans"""
-    games = BoardGame.objects.filter(loaned=True)
-    context = {"games": games}
+    loans = GameLoan.objects.filter(returned=False)
+    context = {"loans": loans}
     return render(request, "board_games/loans.html", context)
 
 
@@ -88,8 +89,7 @@ def add_loan(request, game_id):
             new_loan.save()
             game.loaned = True
             game.save()
-            # TODO redirect to the user loans?
-            return redirect("board_games:games")
+            return redirect("board_games:loans")
 
     context = {"game": game, "form": form}
     return render(request, "board_games/add_loan.html", context)
@@ -98,7 +98,6 @@ def add_loan(request, game_id):
 def edit_loan(request, loan_id):
     """Editing a loan"""
     loan = GameLoan.objects.get(id=loan_id)
-    game = loan.game
 
     # if loan.owner != request.user:
     #     raise Http404
@@ -111,16 +110,17 @@ def edit_loan(request, loan_id):
 
         if form.is_valid():
             form.save()
-            # TODO redirect to game loans
-            return redirect("board_games:games")
+            return redirect("board_games:loans")
 
-    context = {"loan": loan, "game": game, "form": form}
+    context = {"loan": loan, "form": form}
     return render(request, "board_games/edit_loan.html", context)
 
 
-def return_game(request, game_id):
+def return_game(request, loan_id):
     """Returns the game given"""
-    game = BoardGame.objects.get(id=game_id)
-    game.loaned = False
-    game.save()
+    loan = GameLoan.objects.get(id=loan_id)
+    loan.returned = True
+    loan.game.loaned = False
+    loan.game.save()
+    loan.save()
     return redirect("board_games:loans")

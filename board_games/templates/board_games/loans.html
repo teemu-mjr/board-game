@@ -6,14 +6,15 @@ This is the loans page header
 {% block content %}
 
 <ul>
-    {% for game in games %}
+    {% for loan in loans %}
     <li>
-        <a href={% url 'board_games:return_game' game.id %}>Return {{game}}</a>
-        <p>{{ game.return_date }}</p>
+        <a href={% url 'board_games:return_game' loan.id %}>Return {{loan.game}}</a>
+        <a href={% url 'board_games:edit_loan' loan.id %}>edit</a>
+        {{ loan.date_loaned }}
+        {{ loan.return_date }}
     </li>
     {% empty %}
     <li>No loans</li>
     {% endfor %}
-
 </ul>
 {% endblock content %}

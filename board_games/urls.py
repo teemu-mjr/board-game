@@ -18,7 +18,7 @@ urlpatterns = [
     # loaning a game
     path("add_loan/<int:game_id>/", views.add_loan, name="add_loan"),
     # edit loan
-    path("edit_loan/<int:game_id>/", views.edit_loan, name="edit_loan"),
+    path("edit_loan/<int:loan_id>/", views.edit_loan, name="edit_loan"),
     # return game
-    path("return_game/<int:game_id>/", views.return_game, name="return_game"),
+    path("return_game/<int:loan_id>/", views.return_game, name="return_game"),
 ]
