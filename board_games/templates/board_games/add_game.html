@@ -1,22 +1,36 @@
 {% extends 'board_games/base.html' %}
-{% load bootstrap4 %}
 
-{% block page_header %}
-<h2>Add your board game</h2>
-{% endblock page_header %}
 
 {% block content %}
 
-<form method="post" action="{% url 'board_games:add_game' %}" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-    <button name="submit" class="btn btn-primary">Add</button>
+    <div class="container">
+        <h2>Add your game</h2>
+        <form  method="post" action"{% url 'board_games:add_game' %}">
+          <div class="form-group">
+            <label for="game">Game:</label>
+            <input type="text" class="form-control" id="game" placeholder="Enter game name" name="game">
+          </div>
+          <div class="form-group">
+            <label for="genre">Genre:</label>
+            <input type="text" class="form-control" id="genre" placeholder="Enter genre of the game" name="genre">
+          </div>
+          <div class="form-group">
+            <label for="year_published">Year Published:</label>
+            <input type="number" class="form-control" id="year_published" placeholder="Enter publishing year of the game" name="year_published">
+          </div>
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success">Add</button>
+          <button type="reset" class="btn btn-danger">Reset</button>
+        </form>
+      </div>
+    
 
-    {% endbuttons %}
+    
 
-    <input type="hidden" name="next" value="{% url 'board_games:games' %}" />
+        
 
-</form>
+
+    </form>
+</div>
 
 {% endblock content %}
