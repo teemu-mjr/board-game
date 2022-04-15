@@ -9,7 +9,7 @@ class BoardGame(models.Model):
     genre = models.CharField(max_length=200)
     year_published = models.IntegerField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    loaned = models.BooleanField()
+    loaned = models.BooleanField(null=True)
 
     def __str__(self):
         return self.game
