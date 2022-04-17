@@ -8,13 +8,11 @@
 
 steph:
 
-edit_game,
-add_game,
-add_loan,
-game_loans (where all your loans are listed, with return date and return loan button)
-return_game, (will list a form), only has datefield with return button?
-
-add restricted access,
+edit_game, x
+add_game, x
+add_loan, x
+loans (where all your loans are listed, with return date and return loan button) x
+- add content to navbar?
 
 more specific bootstrap styling ?
 
