@@ -1,4 +1,4 @@
-from datetime import datetime
+from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import redirect, render
 
@@ -13,6 +13,7 @@ def index(request):
     return render(request, "board_games/index.html")
 
 
+@login_required
 def games(request):
     """Shows all the games available"""
     games = BoardGame.objects.order_by("game")
@@ -20,13 +21,15 @@ def games(request):
     return render(request, "board_games/games.html", context)
 
 
+@login_required
 def loans(request):
     """Shows all users loans"""
-    loans = GameLoan.objects.filter(returned=False)
+    loans = GameLoan.objects.filter(returned=False).filter(owner=request.user)
     context = {"loans": loans}
     return render(request, "board_games/loans.html", context)
 
 
+@login_required
 def game_info(request, game_id):
     """Shows information about given game"""
     game = BoardGame.objects.get(id=game_id)
@@ -35,6 +38,7 @@ def game_info(request, game_id):
     return render(request, "board_games/game_info.html", context)
 
 
+@login_required
 def add_game(request):
     """Adds a new game"""
     if request.method != "POST":
@@ -52,12 +56,13 @@ def add_game(request):
     return render(request, "board_games/add_game.html", context)
 
 
+@login_required
 def edit_game(request, game_id):
     """Edit a game"""
     game = BoardGame.objects.get(id=game_id)
 
-    # if loan.owner != request.user:
-    #     raise Http404
+    if game.owner != request.user:
+        raise Http404
 
     if request.method != "POST":
         form = GameForm(instance=game)
@@ -73,6 +78,7 @@ def edit_game(request, game_id):
     return render(request, "board_games/edit_game.html", context)
 
 
+@login_required
 def add_loan(request, game_id):
     """Adds a new loan"""
     game = BoardGame.objects.get(id=game_id)
@@ -95,12 +101,13 @@ def add_loan(request, game_id):
     return render(request, "board_games/add_loan.html", context)
 
 
+@login_required
 def edit_loan(request, loan_id):
     """Editing a loan"""
     loan = GameLoan.objects.get(id=loan_id)
 
-    # if loan.owner != request.user:
-    #     raise Http404
+    if loan.owner != request.user:
+        raise Http404
 
     if request.method != "POST":
         form = GameLoanForm(instance=loan)
@@ -116,6 +123,7 @@ def edit_loan(request, loan_id):
     return render(request, "board_games/edit_loan.html", context)
 
 
+@login_required
 def return_game(request, loan_id):
     """Returns the game given"""
     loan = GameLoan.objects.get(id=loan_id)
