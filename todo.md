@@ -9,6 +9,7 @@
 steph:
 
 edit_game, x
+edit_loan,
 add_game, x
 add_loan, x
 loans (where all your loans are listed, with return date and return loan button) x
@@ -20,11 +21,10 @@ more specific bootstrap styling ?
 
 gabes:
 
-index,
-base,
-games,
-game_info,
-edit_loan,
+index, - add logout to jumbotron if you are logged in
+base, - minor styling polishing to do(dark mode?)
+games, - add "add game" button, 
+game_info, - have info of the game(use card style, ignore pictures for now), and below have a space for loan history
 login,
 logout,
 register

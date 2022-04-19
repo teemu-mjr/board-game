@@ -5,19 +5,25 @@ This is the games page header
 
 {% block content %}
 
-<ul>
-    {% for game in games %}
-    <li>
-        {% if not game.loaned %}
-        Available
-        {% elif game.loaned %}
-        Unavailable
-        {% endif %}
-        <a href={% url 'board_games:game_info' game.id %}>{{game}}</a>
-    </li>
-    {% empty %}
-    <li>No games :(</li>
-    {% endfor %}
 
-</ul>
+    {% for game in games %}
+    
+        {% if not game.loaned %}
+        <div class="card mb-3">
+            <h4 class="card-header">
+                {{ game }}
+                <small><a class="btn btn-outline-primary" href={% url 'board_games:game_info' game.id %}>{{game}}</a></small>
+            </h4>
+        </div>
+        {% elif game.loaned %}
+        <div class="card mb-3 bg-danger">
+            <h4 class="card-header">
+                {{ game }}
+                <small><a class="btn btn-outline-primary" href={% url 'board_games:game_info' game.id %}>{{game}}</a></small>
+            </h4>
+        </div>
+        {% endif %}
+    {% empty %}
+    <div>No games :(</div>
+    {% endfor %}
 {% endblock content %}
