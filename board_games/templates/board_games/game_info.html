@@ -9,6 +9,9 @@
     <p class="lead">
         {% if not game.loaned %}
         <a class="btn btn-lg btn-primary" href="{% url 'board_games:add_loan' game.id %}">Loan Game &raquo;</a>
+        {% elif game.loaned and loans.first.owner == user %}
+        <a class="btn btn-lg btn-primary" href={% url 'board_games:return_game' loans.first.id %}>Return Game
+            &raquo;</a>
         {% endif %}
         {% if game.owner == user %}
         <a class="btn btn-lg btn-primary" href="{% url 'board_games:edit_game' game.id %}">Edit game &raquo;</a>
@@ -26,7 +29,7 @@
     <div class="card">
         <div class="card-header">The date of loan: {{ loans.first.date_loaned|date:'d.m.Y' }}</div>
         <div class="card-body">The game has to be returned on {{ loans.first.return_date|date:'d.m.Y' }}</div>
-        <div class="card-footer">You still have: {{ loans.first.date_loaned |timeuntil:loans.first.return_date }}</div>
+        <div class="card-footer">You still have: {{ loans.first.return_date|timeuntil:loans.first.date_loaned }}</div>
     </div>
 </div>
 {% endif %}
