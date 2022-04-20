@@ -1,17 +1,39 @@
 {% extends 'board_games/base.html' %}
-{% load bootstrap4 %}
 
 {% block page_header %}
-<h4>Edit {{ game }}</h4>
+<h4>Edit game</h4>
 {% endblock page_header %}
 
 {% block content %}
-<form action="{% url 'board_games:edit_game' game.id %}" method="post" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-        <button type="submit" class="btn btn-success">Save</button>
-        <a href="{% url 'board_games:game_info' game.id %}" type="button" class="btn btn-danger" >Cancel</button></a>
-    {% endbuttons %}
-</form>
-{% endblock content %}}
+
+    <div class="container">
+        <form  method="post" action"{% url 'board_games:edit_game' game.id %}">
+          <div class="form-group">
+            <label for="game">Game:</label>
+            <input type="text" class="form-control" id="game" placeholder="Game name" name="game" value="{{ game.game }}">
+          </div>
+          <div class="form-group">
+            <label for="genre">Genre:</label>
+            <input type="text" class="form-control" id="genre" placeholder="Genre of the game" name="genre" value="{{ game.genre }}">
+          </div>
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" class="form-control" id="description" placeholder="Description of the game" name="description" value="{{ game.description }}">
+          </div>
+          <div class="form-group">
+            <label for="year_published">Year Published:</label>
+            <input type="number" class="form-control" id="year_published" placeholder="Publishing year of the game" name="year_published" value="{{ game.year_published }}">
+          </div>
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success">Add</button>
+          <button type="reset" class="btn btn-danger">Reset</button>
+          <a href="{% url 'board_games:game_info' game.id %}" type="button" class="btn btn-danger" >Cancel</a>
+        </form>
+      </div>
+
+{% endblock content %}
+
+
+
+
+
