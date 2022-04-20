@@ -21,11 +21,11 @@ more specific bootstrap styling ?
 
 gabes:
 
-index, - add logout to jumbotron if you are logged in
-base, - minor styling polishing to do(dark mode?)
-games, - add "add game" button, 
-game_info, - have info of the game(use card style, ignore pictures for now), and below have a space for loan history
-login,
+index, - add logout to jumbotron if you are logged in, x
+base, - minor styling polishing to do(dark mode?), x
+games, - add "add game" button, x
+game_info, - have info of the game(use card style, ignore pictures for now), and below have a space for loan history, x
+login, x
 logout,
 register
 
