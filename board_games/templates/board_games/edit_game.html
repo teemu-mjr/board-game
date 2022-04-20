@@ -10,8 +10,8 @@
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
-        <button type="submit" class="btn btn-success">Save</button>
-        <a href="{% url 'board_games:game_info' game.id %}" type="button" class="btn btn-danger" >Cancel</button></a>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="{% url 'board_games:game_info' game.id %}" type="button" class="btn btn-danger">Cancel</button></a>
     {% endbuttons %}
 </form>
-{% endblock content %}}
+{% endblock content %}

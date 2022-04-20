@@ -1,41 +1,45 @@
 {% extends 'board_games/base.html' %}
 {% block page_header %}
 <div class="jumbotron">
-  <h1>{{game.game}}</h1>
-  <p><li>
-  A board game is a game that involves counters or pieces moved or placed on a pre-marked surface or "board", 
-according to a set of rules. Games can be based on pure strategy, 
-chance or a mixture of the two, and usually have a goal that a player aims to achieve.
-    </li>
+    <h1 class="display-4">{{game.game}}</h1>
+    <hr class="my-4">
+    <p>{{game.genre}}</p>
+    <p class="lead">{{game.description}}</p>
+    <hr class="my-4">
+    <p class="lead">
+        {% if not game.loaned %}
+        <a class="btn btn-lg btn-primary" href="{% url 'board_games:add_loan' game.id %}">Loan Game &raquo;</a>
+        {% endif %}
+        {% if game.owner == user %}
+        <a class="btn btn-lg btn-primary" href="{% url 'board_games:edit_game' game.id %}">Edit game &raquo;</a>
+        {% else %}
+        <p>Game owner: {{ game.owner }}</p>
+        {% endif %}
+    </p>
 </div>
 {% endblock page_header %}
 {% block content %}
 
-<p>{{game.genre}}</p>
-<p>{{game.year_published}}</p>
-
-<p>{{game.owner}}</p>
-<a href="{% url 'board_games:edit_game' game.id %}">Edit game</a>
-{% if not game.loaned %}
-<a href="{% url 'board_games:add_loan' game.id %}">Loan game</a>
-{% else %}
-
-<p>
-    currently loaned by {{ loans.first.owner }} returndate : {{ loans.first.return_date }}
-</p>
+{% if game.loaned %}
+<div class="container">
+    <h2> currently loaned by {{ loans.first.owner }} returndate : {{ loans.first.return_date }} </h2>
+    <div class="card">
+        <div class="card-header">The date of loan: {{ loans.first.date_loaned|date:'d.m.Y' }}</div>
+        <div class="card-body">The game has to be returned on {{ loans.first.return_date|date:'d.m.Y' }}</div>
+        <div class="card-footer">You still have: {{ loans.first.date_loaned |timeuntil:loans.first.return_date }}</div>
+    </div>
+</div>
 {% endif %}
 
-<ul>
+
+<div class="container">
     {% for loan in loans %}
-
-        <div class="container">
-            <h2>The game has been loaned by {{ loan.owner }}</h2>
-                 <div class="card">
-                 <div class="card-header">The date of loan: {{ loan.date_loaned|date:'d.m.Y' }}</div>
-                 <div class="card-body">The game has to be returned on {{ loan.return_date|date:'d.m.Y' }}</div> 
-                 <div class="card-footer">You still have: {{ loan.date_loaned |timeuntil:loan.return_date}}</div>
-        </div>
+    <h2>The game was loaned by {{ loan.owner }}</h2>
+    <div class="card">
+        <div class="card-header">The date of loan: {{ loan.date_loaned|date:'d.m.Y' }}</div>
+        <div class="card-body">The game was returned on {{ loan.return_date|date:'d.m.Y' }}</div>
+    </div>
     {% endfor %}
+</div>
 
-</ul>
 {% endblock content %}

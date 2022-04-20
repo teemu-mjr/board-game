@@ -13,7 +13,8 @@ edit_loan,
 add_game, x
 add_loan, x
 loans (where all your loans are listed, with return date and return loan button) x
-- add content to navbar?
+
+-   add content to navbar?
 
 more specific bootstrap styling ?
 
@@ -27,7 +28,7 @@ games, - add "add game" button, x
 game_info, - have info of the game(use card style, ignore pictures for now), and below have a space for loan history, x
 login, x
 logout, x
-register, 
+register,
 
 **Models**
 
@@ -68,8 +69,8 @@ register,
 
 The minimum requirement for an accepted teamwork is 12 points. To earn that it is expected that
 
--   [ ] the web site is implemented for an accepted subject, (required)
--   [ ] the implemented web site functions, (2 points)
+-   [x] the web site is implemented for an accepted subject, (required)
+-   [x] the implemented web site functions, (2 points)
 -   [x] MVT architecture is obeyed, (2 points)
 -   [x] there must be more than 1 model, (2 points)
 -   [x] users [board gamers] can view a list of all [available board games] entities of one kind, (2 points)
