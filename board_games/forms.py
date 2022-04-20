@@ -7,7 +7,7 @@ class GameForm(forms.ModelForm):
     class Meta:
         model = BoardGame
         fields = ['game', 'genre', 'year_published']
-        labels = {'game': 'Game', 'genre': 'Genre',
+        labels = {'game': 'Game', 'genre': 'Genre', 'description': 'Description',
                   'year_published': 'Year Published'}
 
 
