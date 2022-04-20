@@ -14,7 +14,7 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-md navbar-light" style="background-color: #ffc77e;">
+  <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #2a2a2a;">
 
     <a class="navbar-brand" href="{% url 'board_games:index'%}">
       Board Game Website</a>
@@ -28,6 +28,11 @@
           <a class="nav-link" href="{% url 'board_games:games'%}">
             Games</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'board_games:add_game'%}">
+            Add game</a>
+        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="{% url 'board_games:loans'%}">
             Loans</a>

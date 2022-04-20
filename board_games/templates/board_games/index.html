@@ -9,11 +9,19 @@
             Games can be based on pure strategy, chance or a mixture of the two, 
             and usually have a goal that a player aims to achieve. 
         </p>
+        {% if user.is_authenticated %}
+        <class="nav-item">
+          <span class="navbar-text"><b>Hello, {{ user.username }}.</b></span>
+        <p>
+        <a class="btn btn-lg btn-primary" href="{% url 'users:log_out' %}"
+            role="button">Log out &raquo;</a>
+        </p>
+        {% else %}
         <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
             role="button">Register &raquo;</a>
-            
         <a class="btn btn-lg btn-primary" href="{% url 'users:login' %}"
             role="button">Log in &raquo;</a>
+        {% endif %}
     </div>
 
 {% endblock page_header %}

@@ -1,22 +1,52 @@
 {% extends "board_games/base.html" %}
 
 {% block page_header %}
-<h2>Log in to your account.</h2>
+    <div class="jumbotron">
+        <h1 class="display-5">Returning to this website</h1>
+        <class="lead"></p>Login here using your username and password.
+
+(Cookies must be enable in your browser)
 {% endblock page_header %}
+
+
+
+
 
 {% block content %}
 
-<form action="{% url 'users:login' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
+    <div class="container">
+        <form action="{% url 'users:login' %}" method="post">
+            {% csrf_token %}
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                     </div>
+                    <div class="panel-body">
+                        {% if error_message %}
+                            <p class="bg-danger p-d ml-b">{{ error_message }}</p>
+                        {% endif %}
+                        <div class="form-group clearfix">
+                            <label for="username" class="col-md-4 control-label text-right">Username:</label>
+                            <div class="col-md-6">
+                                <input name="username" value="" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label for="password" class="col-md-4 control-label text-right">Password:</label>
+                            <div class="col-md-6">
+                                <input name="password" type="password" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-md-offset-4">
+                            <input name="login" type="submit" value="Login" class="btn btn-success" /> &nbsp;
+                            <a href="{% url 'users:register' %}">or --> Register here</a>
+                                <input type="hidden" name="next" value="{% url 'board_games:index' %}">
 
-    <button name="submit">Log in</button>
-
-    {% if user.is_authenticated %}
-    <h1>Hello!</h1>
-    {% endif %}
-
-    <input type="hidden" name="next" value="{% url 'board_games:index' %}">
-</form>
-
-{% endblock content %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    {% endblock content %}

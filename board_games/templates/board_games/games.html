@@ -1,15 +1,22 @@
 {% extends 'board_games/base.html' %}
 {% block page_header %}
-This is the games page header
-{% endblock page_header %}
+<div class="jumbotron">
+  <h1>Board Games Club</h1>
+  <p><li>
+        Board Games Club aims to promote board games as a recreational activity that boosts strategic thinking skills and social interaction. 
+    </li>
+    <li>This club is a platform for students with a common interest in board games to come together to have fun and to build relationships. 
+    </li>
+    <li>Board games are intellectually stimulating and fun to play. 
+    </li>
+    </p>
+</div>{% endblock page_header %}
 
 {% block content %}
-
-
     {% for game in games %}
     
         {% if not game.loaned %}
-        <div class="card mb-3">
+        <div class="card mb-3 bg-success">
             <h4 class="card-header">
                 {{ game }}
                 <small><a class="btn btn-outline-primary" href={% url 'board_games:game_info' game.id %}>{{game}}</a></small>
