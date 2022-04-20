@@ -10,15 +10,19 @@
         <form  method="post" action"{% url 'board_games:add_game' %}">
           <div class="form-group">
             <label for="game">Game:</label>
-            <input type="text" class="form-control" id="game" placeholder="Enter game name" name="game">
+            <input type="text" class="form-control" id="game" placeholder="Game name" name="game">
           </div>
           <div class="form-group">
             <label for="genre">Genre:</label>
-            <input type="text" class="form-control" id="genre" placeholder="Enter genre of the game" name="genre">
+            <input type="text" class="form-control" id="genre" placeholder="Genre of the game" name="genre">
+          </div>
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" class="form-control" id="description" placeholder="Descriptionof the game" name="description">
           </div>
           <div class="form-group">
             <label for="year_published">Year Published:</label>
-            <input type="number" class="form-control" id="year_published" placeholder="Enter publishing year of the game" name="year_published">
+            <input type="number" class="form-control" id="year_published" placeholder="Publishing year of the game" name="year_published">
           </div>
           {% csrf_token %}
           <button type="submit" class="btn btn-success">Add</button>
