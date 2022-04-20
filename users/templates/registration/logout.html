@@ -1,8 +1,21 @@
 {% extends "board_games/base.html" %}
 
 {% block page_header %}
-Thank you for visiting our site. 
+
+    <div class="jumbotron">
+        <h1 class="display-5">Thank you for visiting our site.</h1>
+        <class="lead"></p>
+You have been logged out successfully.
+
 {% endblock page_header %}
+
 {% block content %}
-We are waiting to see 
+<p>
+Have you logged out by mistake, Please log in again.
+</p>
+   </div>
+    <div class="col-md-6 col-md-offset-4">
+    <a href="{% url 'users:login' %}"><input name="login" type="submit" value="Login" class="btn btn-success" /></a>
+        <input type="hidden" name="next" value="{% url 'board_games:index' %}">
+    </div>
 {% endblock content %}
