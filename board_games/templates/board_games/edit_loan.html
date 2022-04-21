@@ -8,11 +8,11 @@
 
 
 <form action="{% url 'board_games:edit_loan' loan.id %}" method="post">
+    {% csrf_token %}
     <div class="form-group">
         <label for="return_date">Loan untill:</label>
         <input type="date" class="form-control" id="return_date" name="return_date" value="{{loan.return_date}}">
     </div>
-    {% csrf_token %}
     <button type="submit" class="btn btn-success">Save</button>
     <a href="{% url 'board_games:loans' %}" type="button" class="btn btn-danger" >Cancel</button></a>
 </form>

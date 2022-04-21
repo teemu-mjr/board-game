@@ -8,6 +8,7 @@
 
     <div class="container">
         <form  method="post" action"{% url 'board_games:edit_game' game.id %}">
+          {% csrf_token %}
           <div class="form-group">
             <label for="game">Game:</label>
             <input type="text" class="form-control" id="game" placeholder="Game name" name="game" value="{{ game.game }}">
@@ -24,8 +25,7 @@
             <label for="year_published">Year Published:</label>
             <input type="number" class="form-control" id="year_published" placeholder="Publishing year of the game" name="year_published" value="{{ game.year_published }}">
           </div>
-          {% csrf_token %}
-          <button type="submit" class="btn btn-success">Add</button>
+          <button type="submit" class="btn btn-success">Save</button>
           <button type="reset" class="btn btn-danger">Reset</button>
           <a href="{% url 'board_games:game_info' game.id %}" type="button" class="btn btn-danger" >Cancel</a>
         </form>

@@ -6,14 +6,15 @@
 
 {% block content %}
 
-    <div class="container">
-        <form  method="post" action"{% url 'board_games:add_game' %}">
-          <div class="form-group">
-            <label for="game">Game:</label>
-            <input type="text" class="form-control" id="game" placeholder="Game name" name="game" value="{{ game.game }}">
-          </div>
-          <div class="form-group">
-            <label for="genre">Genre:</label>
+<div class="container">
+  <form  method="post" action"{% url 'board_games:add_game' %}">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="game">Game:</label>
+      <input type="text" class="form-control" id="game" placeholder="Game name" name="game" value="{{ game.game }}">
+    </div>
+    <div class="form-group">
+      <label for="genre">Genre:</label>
             <input type="text" class="form-control" id="genre" placeholder="Genre of the game" name="genre" value="{{ game.genre}}">
           </div>
           <div class="form-group">
@@ -24,7 +25,6 @@
             <label for="year_published">Year Published:</label>
             <input type="number" class="form-control" id="year_published" placeholder="Publishing year of the game" name="year_published" value="{{ game.year_published}}">
           </div>
-          {% csrf_token %}
           <button type="submit" class="btn btn-success">Add</button>
           <button type="reset" class="btn btn-secondary">Reset</button>
         </form>

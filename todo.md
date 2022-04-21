@@ -9,7 +9,7 @@
 steph:
 
 edit_game, x
-edit_loan,
+edit_loan, x
 add_game, x
 add_loan, x
 loans (where all your loans are listed, with return date and return loan button) x
@@ -32,8 +32,8 @@ register,
 
 **Models**
 
--   [ ] board game (like Book in bcb)
--   [ ] game loan
+-   [x] board game (like Book in bcb)
+-   [x] game loan
 
 **Views**
 
@@ -43,25 +43,25 @@ register,
 
 -   [x] board games (like books in cbc)
     -   listing all available games
--   [ ] board game (like book/reviews in cbc)
+-   [x] board game (like book/reviews in cbc)
     -   listing loans etc
--   [ ] create game (like new_book in cbc)
+-   [x] create game (like new_book in cbc)
     -   adding a new game
 -   [x] edit game (like edit_review/edit_book in cbc)
     -   editing you own games
--   [ ] loan game
+-   [x] loan game
     -   loaning a game that is free
--   [ ] edit loan
+-   [x] edit loan
     -   editing a made loan
 
 **Forms**
 
--   [ ] Game form (like BookForm in cbc)
+-   [x] Game form (like BookForm in cbc)
     -   name
     -   genre
     -   year
     -   (stars)
--   [ ] Loan form
+-   [x] Loan form
     -   name of the loaner
     -   game
     -   date loaned
