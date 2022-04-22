@@ -96,12 +96,10 @@
     <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
 
 
-    <div class="col-md-6 col-md-offset-4">
-      <input name="register" type="submit" value="Register" class="btn btn-success" /></a>
+    <div class="col-md-6 col-md-offset-4">    
+      <button type="submit" class="registerbtn">Register</button>      </div>
           <input type="hidden" name="next" value="{% url 'board_games:index' %}">
-      </div>
-    
-      
+
 <hr>
 
 
@@ -110,6 +108,8 @@
   </div>
 </form>
 </form>
+
+
 
 {% endblock content %}
 

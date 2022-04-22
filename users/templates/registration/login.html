@@ -1,48 +1,61 @@
 {% extends "board_games/base.html" %}
 
 {% block page_header %}
-    <div class="jumbotron">
-        <h1 class="display-5">Returning to this website</h1>
-        <class="lead"></p>Login here using your username and password.
+<div class="jumbotron">
+    <h1 class="display-5">Returning to this website</h1>
+    <class="lead">
+        </p>Login here using your username and password.
 
-(Cookies must be enable in your browser)
-{% endblock page_header %}
+        (Cookies must be enable in your browser)
+        {% endblock page_header %}
 
-{% block content %}
+        {% block content %}
 
-    <div class="container">
-        <form action="{% url 'users:login' %}" method="post">
-            {% csrf_token %}
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                     </div>
-                    <div class="panel-body">
-                        {% if error_message %}
-                            <p class="bg-danger p-d ml-b">{{ error_message }}</p>
-                        {% endif %}
-                        <div class="form-group clearfix">
-                            <label for="username" class="col-md-4 control-label text-right">Username:</label>
-                            <div class="col-md-6">
-                                <input name="username" value="" type="text" class="form-control" />
-                            </div>
+        <div class="container">
+            <form action="{% url 'users:login' %}" method="post">
+                {% csrf_token %}
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
                         </div>
-                        <div class="form-group clearfix">
-                            <label for="password" class="col-md-4 control-label text-right">Password:</label>
-                            <div class="col-md-6">
-                                <input name="password" type="password" class="form-control" />
+                        <div class="panel-body">
+                            {% if form.errors %}
+                            {% for field in form %}
+                            {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-md-offset-4">
-                            <input name="login" type="submit" value="Login" class="btn btn-success" /> &nbsp;
-                            <a href="{% url 'users:register' %}">or --> Register here</a>
-                                <input type="hidden" name="next" value="{% url 'board_games:index' %}">
-
+                            {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            <div class="form-group clearfix">
+                                <label for="username" class="col-md-4 control-label text-right">Username:</label>
+                                <div class="col-md-6">
+                                    <input name="username" value="" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label for="password" class="col-md-4 control-label text-right">Password:</label>
+                                <div class="col-md-6">
+                                    <input name="password" type="password" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between col-md-6 col-md-offset-4">
+                                <input name="login" type="submit" value="Login" class="btn btn-success"
+                                    style="width: 45%" />
+                                <a class="btn btn-secondary" style="width: 45%"
+                                    href="{% url 'users:register' %}">Register</a>
+                            </div>
+                            <input type="hidden" name="next" value="{% url 'board_games:index' %}">
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
-    </div>
-    
-    {% endblock content %}
+            </form>
+        </div>
+
+        {% endblock content %}
