@@ -1,119 +1,54 @@
 {% extends "board_games/base.html" %}
 
-{% block content %}
-
-
-
-
 {% block page_header %}
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: black;
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
-  
-  /* Add padding to containers */
-  .container {
-    padding: 16px;
-    background-color: white;
-  }
-  
-  /* Full-width input fields */
-  input[type=text], input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-  }
-  
-  input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-  }
-  
-  /* Overwrite default styles of hr */
-  hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
-  }
-  
-  /* Set a style for the submit button */
-  .registerbtn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 16px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-  }
-  
-  .registerbtn:hover {
-    opacity: 1;
-  }
-  
-  /* Add a blue text color to links */
-  a {
-    color: dodgerblue;
-  }
-  
-  /* Set a grey background color and center the text of the "sign in" section */
-  .signin {
-    background-color: #f1f1f1;
-    text-align: center;
-  }
-  </style>
-  </head>
-
-
-{% endblock page_header %}
 <div class="jumbotron">
   <h1 class="display-5">Register</h1>
-  <class="lead"></p>Please fill in this form to create an account.</p>
+  <class="lead">
+    </p>Please fill in this form to create an account.</p>
 </div>
 
-<form action="{% url 'board_games:index' %}" method="post">
-  {% csrf_token %}
+{% endblock page_header %}
 
+{% block content %}
+<div class="container">
+  <form action="{% url 'users:register' %}" method="post">
+    {% csrf_token %}
+    {% if form.errors %}
+    {% for field in form %}
+    {% for error in field.errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
 
-    <label for="user"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="user" id="user" required>
+    {% for field in form %}
+    <div class="form-group clearfix">
+      <label for="username" class="col-md-4 control-label">{{ field.label_tag }}</label>
+      <div class="col-md-6">
+        {{ field }}
+      </div>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    </div>
+    {% endfor %}
 
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
-
-
-    <div class="col-md-6 col-md-offset-4">    
-      <button type="submit" class="registerbtn">Register</button>      </div>
-          <input type="hidden" name="next" value="{% url 'board_games:index' %}">
-
-<hr>
-
+    <div class="col-md-6 col-md-offset-4">
+      <button class="btn btn-primary" type="submit">Register</button>
+    </div>
+  </form>
+  <hr>
 
   <div class="container signin">
-    <p>Already have an account? <a href="{% url 'users:login' %}">Sign in</a>.</p>
+    <p>Already have an account? <a class="btn btn-outline-secondary" href="{% url 'users:login' %}">Sign in</a></p>
   </div>
-</form>
-</form>
-
+</div>
 
 
 {% endblock content %}
-
-
-
-
-
