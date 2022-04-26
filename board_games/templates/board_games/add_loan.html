@@ -6,10 +6,10 @@
 
 {% block content %}
 
-<form action="{% url 'board_games:add_loan' game.id %}" method="post">
+<form action="{% url 'board_games:add_loan' game.id %}" method="post"> 
   {% csrf_token %}
     <div class="form-group">
-        <label for="return_date">Loan untill:</label>
+        <label for="return_date">Loan until:</label>
         <input type="date" class="form-control" id="return_date" name="return_date">
       </div>
     <button type="submit" class="btn btn-success">Loan</button>

@@ -19,14 +19,14 @@
         <div class="card mb-3 border border-success">
             <h4 class="card-header">
                 {{ game }}
-                <small><a class="btn btn-outline-success btn-sm btn-lg float-right" href={% url 'board_games:game_info' game.id %}>More info....</a></small>
+                <a class="btn btn-outline-success btn-sm float-right" href={% url 'board_games:game_info' game.id %}>More info....</a>
             </h4>
         </div>
         {% elif game.loaned %}
         <div class="card mb-3 border border-secondary">
             <h4 class="card-header">
                 {{ game }}
-                <small><a class="btn btn-outline-secondary btn-sm btn-lg float-right" href={% url 'board_games:game_info' game.id %}>More info...</a></small>
+                <a class="btn btn-outline-secondary btn-sm float-right" href={% url 'board_games:game_info' game.id %}>More info...</a>
             </h4>
         </div>
         {% endif %}

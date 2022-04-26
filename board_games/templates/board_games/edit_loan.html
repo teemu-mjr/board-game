@@ -10,7 +10,7 @@
 <form action="{% url 'board_games:edit_loan' loan.id %}" method="post">
     {% csrf_token %}
     <div class="form-group">
-        <label for="return_date">Loan untill:</label>
+        <label for="return_date">Loan until:</label>
         <input type="date" class="form-control" id="return_date" name="return_date" value="{{loan.return_date}}">
     </div>
     <button type="submit" class="btn btn-success">Save</button>
